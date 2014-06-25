@@ -28,7 +28,7 @@ function add_new_item($items) //This function was created to handle the new item
 
     if (!empty($items)) 
     {
-        echo "Where do you want to add the T0-Do item? (B)eginning or (E)nd?";
+        echo "Where do you want to add the To-Do item? (B)eginning or (E)nd?";
         $location = get_input(true);
     }
 
@@ -69,26 +69,6 @@ function sort_menu($list)
     return $list;
 }
 
-
-//THE BELOW FUNCTION IS MINE AND OMAR'S SOLUTION. THE ONE ABOVE IS BEN'S
-//     $input= get_input(true);
-
-//     if($input == 'A') {
-//         asort($list);
-
-//     } elseif ($input =='Z') {
-//         arsort($list);
-
-//     } elseif ($input == 'O') {
-//         ksort($list);
-
-//     } elseif ($input == 'R') {
-//         krsort($list);
-//     }
-//     return $list;
-// }
-
-
 do {       
     echo list_items($items);
 
@@ -102,7 +82,8 @@ do {
     }
     elseif ($input == 'O')
     {
-        
+        $dataListArray = Open_Read_File();
+        $items = array_merge($items, $dataListArray); 
     }
     elseif ($input == 'R') 
     {
@@ -125,7 +106,6 @@ do {
     }
 } 
 while ($input != 'Q');   // Exit when input is (Q)uit
-    // } while (!($input == 'Q' || $input == 'q'))- This is the same thing as line 29 Q Statement
 echo "Goodbye!\n";
 
 // Exit with 0 errors
